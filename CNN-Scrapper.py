@@ -1,6 +1,8 @@
+
 import requests
 import json
 from bs4 import BeautifulSoup
+import boto3
 
 def main():
     website = input()
@@ -13,19 +15,25 @@ def main():
         if 'index.html' not in i.a.get('href') or 'live-news' in i.a.get('href'):
             continue
         list_links.append(i.a.get('href'))
-    data = {}
-    data['CNN'] = []
-    for i in list_links:
+
+    dynamo = boto3.resource('dynamodb',region_name='us-east-1')
+    dynamoTable = dynamo.Table('CNNTable')
+    print(dynamoTable.table_status)
+
+    for x, i in enumerate(list_links):
         hold = []
         print(i)
         hold  = article(i)
-        data['CNN'].append({'author':hold[0],'hyperlink':hold[1],
-                            'publication_date':hold[2],
-                            'tittle':hold[3],
-                            'description':hold[4],
-                            'image':hold[5]})
-    print(data)
-    dump(data)
+        dynamoTable.put_item(
+            Item = {'CNN':str(x),
+                    'author':hold[0],
+                    'hyperlink':hold[1],
+                    'publication_date':hold[2],
+                    'tittle':hold[3],
+                    'description':hold[4],
+                    'image':hold[5]
+                    }
+            )
 def article(web):
     website = 'http://www.cnn.com'+web
     source = requests.get(website)
@@ -33,12 +41,12 @@ def article(web):
     soup = BeautifulSoup(text,"html.parser")
 
     ar = soup.find('meta',{'itemprop':'author'})
-
+    des = soup.find('meta',{'itemprop':'description'})
     author = ar.get('content') if soup.find('meta',{'itemprop':'author'}) else 'None'
     hyperlink = soup.find('meta',{'itemprop':'url'}).get('content')
     publication_date = soup.find('meta',{'itemprop':'datePublished'}).get('content')
     tittle = soup.find('meta',{'itemprop':'headline'}).get('content')
-    description = soup.find('meta',{'itemprop':'description'}).get('content')
+    description = des.get('content') if soup.find('meta',{'itemprop':'description'}) else 'None'
     image = soup.find('meta',{'itemprop':'image'}).get('content')
     return author,hyperlink,publication_date,tittle,description,image
 

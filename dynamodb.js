@@ -1,13 +1,11 @@
 var AWS = require("aws-sdk");
 
-AWS.config.update({
-  region: "us-west-2",
-  endpoint: "http://localhost:8000"
-});
+dynamo = boto3.resource('dynamodb',region_name='us-east-1')
+dynamoTable = dynamo.Table('CNNTable')
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 
-var table = "Article";
+var table = "CNNTable";
 
 var params = {
     TableName: table,
@@ -21,16 +19,17 @@ var params = {
     }
 };
 
-console.log("Scanning Movies table.");
+console.log("Scanning  table.");
 docClient.scan(params, onScan);
 
 function onScan(err, data) {
     if (err) {
         console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
     } else {
-        // print all the movies
+        // store all the articles
         console.log("Scan succeeded.");
-        data.Items.forEach(function(movie) {
+        data.Items.forEach(function(article) {
+
            console.log(
                 movie.year + ": ",
                 movie.title, "- rating:", movie.info.rating);

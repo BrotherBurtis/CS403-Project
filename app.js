@@ -1,9 +1,42 @@
+// upload article data from the database
+AWS.config.update({
+  region: "us-west-2",
+  endpoint: 'http://localhost:8000',
+  accessKeyId: "KeyId",
+  secretAccessKey: "SecretAccessKey"
+});
+
+var docClient = new AWS.DynamoDB.DocumentClient();
+
+function scanData() {
+    document.getElementById('textarea').innerHTML += "Scanning CNN table." + "\n";
+
+    var params = {
+        TableName: "CNNTable"
+    };
+
+    docClient.scan(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            document.getElementById('textarea').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+           document.getElementById('textarea').innerHTML += "Scan succeeded. " + "\n";
+            });
+            docClient.scan(params, onScan);
+        }
+    }
+}
+
+
+// posting the articles onto the database
+
 $(() => {
 
 //articles
 $.ajax({
       success: data => {
-         for (let i = 0; i < 10; i++) {
+         for (let i = 0; i < 13; i++) {
 
             if (i === 0) {
                $(".CNN-articles").append(
