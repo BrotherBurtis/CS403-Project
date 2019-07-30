@@ -30,9 +30,7 @@ function onScan(err, data) {
         console.log("Scan succeeded.");
         data.Items.forEach(function(article) {
 
-           console.log(
-                movie.year + ": ",
-                movie.title, "- rating:", movie.info.rating);
+
         });
 
         // continue scanning if we have more movies, because

@@ -29,7 +29,7 @@ def main():
                     'author':hold[0],
                     'hyperlink':hold[1],
                     'publication_date':hold[2],
-                    'tittle':hold[3],
+                    'title':hold[3],
                     'description':hold[4],
                     'image':hold[5]
                     }

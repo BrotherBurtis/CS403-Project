@@ -8,24 +8,17 @@ AWS.config.update({
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 
-function scanData() {
-    document.getElementById('textarea').innerHTML += "Scanning CNN table." + "\n";
-
-    var params = {
-        TableName: "CNNTable"
-    };
-
-    docClient.scan(params, onScan);
-
-    function onScan(err, data) {
-        if (err) {
-            document.getElementById('textarea').innerHTML += "Unable to scan the table: " + "\n" + JSON.stringify(err, undefined, 2);
-        } else {
-           document.getElementById('textarea').innerHTML += "Scan succeeded. " + "\n";
-            });
-            docClient.scan(params, onScan);
-        }
+exports.getItem = function(event, context, callback){
+  var parms = {
+    TableName : process.env.CNNTable
+  };
+  docClient.scan(params, function(err, data){
+    if(err){
+      callback(err, null);
+    }else{
+      callback(null, data.Items);
     }
+  })
 }
 
 
@@ -41,14 +34,14 @@ $.ajax({
             if (i === 0) {
                $(".CNN-articles").append(
                   $("<div>")
-                     .data("article-data", data.articles[i])
+                     .CNNTable("article-data", data.Item[i])
                      .css("width", "100%")
                      .css("height", "100%")
                      .addClass("CNN-feature")
                      .addClass("article")
                      .append(
                         $("<img>")
-                           .attr("src", data.articles[i].urlToImage)
+                           .attr("src", data.Item[i].image.urlToImage)
                            .css("width", "100%")
                            .css("height", "75%")
                            .css("border-radius", "10px")
@@ -59,27 +52,27 @@ $.ajax({
                            .css("height", "25%")
                            .append(
                               $("<h5>")
-                                 .text("source: " + data.articles[i].source.name)
+                                 .text("source: CNN")
                                  .css("padding-bottom", "5px")
                            )
                            .append(
                               $("<h4>")
-                                 .text(data.articles[i].title)
+                                 .text(data.Item[i].title)
                                  .css("text-align", "center")
                                  .css("position", "relative")
                            )
-                           .append($("<p>").text(data.articles[i].description))
+                           .append($("<p>").text(data.Item[i].description))
                      )
                );
             } else {
                $(".CNN-articles").append(
                   $("<div>")
-                     .data("article-data", data.articles[i])
+                     .data("article-data", data.Item[i])
                      .css("width", "100%")
                      .addClass("article")
                      .append(
                         $("<img>")
-                           .attr("src", data.articles[i].urlToImage)
+                           .attr("src", data.Item[i].image.urlToImage)
                            .css("width", "100%")
                            .css("height", "50%")
                            .css("border-radius", "10px")
@@ -89,11 +82,11 @@ $.ajax({
                            .css("width", "100%")
                            .css("height", "50%")
                            .append(
-                              $("<h5>").text("SOURCE: " + data.articles[i].source.name)
+                              $("<h5>").text("SOURCE: CNN")
                            )
                            .append(
                               $("<h4>")
-                                 .text(data.articles[i].title)
+                                 .text(data.Item[i].title)
                                  .css("top", "15%")
                                  .css("text-align", "center")
                                  .css("position", "relative")
@@ -105,15 +98,13 @@ $.ajax({
 
             const readArticle = event => {
                         event.preventDefault();
-                        // console.log("Article Clicked!");
 
-                        // console.log($(event.currentTarget).data("article-data"));
 
-                        const articleImg = $(event.currentTarget).data("article-data").urlToImage;
-                        const articleSrc = $(event.currentTarget).data("article-data").source.name;
+                        const articleImg = $(event.currentTarget).data("article-data").image.urlToImage;
+                        const articleSrc = $(event.currentTarget).data("article-data").author;
                         const articleTitle = $(event.currentTarget).data("article-data").title;
-                        const articleContent = $(event.currentTarget).data("article-data").content;
-                        const articleLink = $(event.currentTarget).data("article-data").url;
+                        const articleContent = $(event.currentTarget).data("article-data").discription;
+                        const articleLink = $(event.currentTarget).data("article-data").hyperlink;
                         // Img
                         $(".content-img").attr("src", articleImg);
 
