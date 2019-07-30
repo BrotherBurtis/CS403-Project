@@ -1,6 +1,6 @@
 // upload article data from the database
 AWS.config.update({
-  region: "us-west-1",
+  region: "us-east-1",
   accessKeyId: "KeyId",
   secretAccessKey: "SecretAccessKey"
 });
