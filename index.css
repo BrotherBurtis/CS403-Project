@@ -1,11 +1,175 @@
 body {
-  padding: 5px
-  background-color: black;
-  color: white;
-
-  font-family: monospace;
-  font-size: 1.5em;
+   margin: 0;
+   font-family: "Roboto", sans-serif;
+   background-color: #f2f2f2;
 }
-.content{
 
+main {
+   width: 80%;
+   margin: auto;
+}
+
+h1.logo {
+   font-family: "Roboto", sans-serif;
+   font-weight: 900;
+   font-size: 100;
+   text-align: center;
+   margin: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+   margin: 0;
+   overflow: hidden;
+   text-overflow: clip;
+}
+
+h5 {
+   font-size: 10px;
+}
+
+p {
+   margin: 0;
+   overflow: hidden;
+   text-overflow: clip;
+}
+
+.content-container > img {
+   width: 100%;
+   height: 85%;
+   border-radius: 5px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.content-container > .content-src {
+   width: 100%;
+   height: auto;
+   font-size: 10px;
+}
+
+.content-container > .content-title {
+   text-align: center;
+   padding: 10px 0 10px 0;
+}
+
+.content-container > .content-article {
+   width: 80%;
+   padding: 10px 0 30px 0;
+   margin: auto;
+   height: auto;
+}
+
+.content-container > div {
+   margin: auto;
+   text-align: center;
+}
+
+.content-link {
+   text-decoration: none;
+}
+
+.business-header {
+   display: flex;
+   margin: 10px;
+   justify-content: space-between;
+}
+
+.business-title {
+   margin: 0;
+   display: flex;
+   align-items: flex-end;
+}
+
+.business-description {
+   display: flex;
+   align-items: flex-end;
+}
+
+.business-description p {
+   margin: 0;
+   font-style: italic;
+}
+
+.business-articles {
+   margin-bottom: 10px;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-gap: 10px;
+}
+
+.business-articles > div {
+   background-color: white;
+   height: 250px;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.business-articles > div:hover {
+   border-radius: 10px;
+   width: 100%;
+   height: 100%;
+   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.business-feature {
+   grid-column: 1/3;
+   grid-row: 1/3;
+}
+
+/* REUSE */
+
+.articles {
+   border-top: 1px solid grey;
+   margin-bottom: 10px;
+}
+
+.header {
+   display: flex;
+   margin: 10px;
+   justify-content: space-between;
+}
+
+.title {
+   margin: 0;
+   display: flex;
+   align-items: flex-end;
+}
+
+.description {
+   display: flex;
+   align-items: flex-end;
+}
+
+.description p {
+   margin: 0;
+   font-style: italic;
+}
+
+.CNN-articles {
+   margin-bottom: 10px;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-gap: 10px;
+}
+
+.CNN-articles > div {
+   background-color: white;
+   height: 250px;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.CNN-articles > div:hover {
+   border-radius: 10px;
+   width: 100%;
+   height: 100%;
+   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.CNN-feature {
+   grid-column: 3/5;
+   grid-row: 1/3;
 }
