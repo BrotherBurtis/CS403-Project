@@ -5,6 +5,8 @@ AWS.config.update({
   secretAccessKey: "SecretAccessKey"
 });
 
+ document.write(region)
+
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 exports.getItem = function(event, context, callback){
