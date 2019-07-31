@@ -1,0 +1,688 @@
+@import url("https://fonts.googleapis.com/css?family=Great+Vibes|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese");
+
+/* 
+font-family: 'Roboto', sans-serif;
+font-family: 'Great Vibes', cursive; 
+*/
+
+body {
+   margin: 0;
+   font-family: "Roboto", sans-serif;
+   background-color: #f2f2f2;
+}
+
+main {
+   width: 80%;
+   margin: auto;
+}
+
+h1.logo {
+   /* border: 1px solid black; */
+   /* font-family: "Great Vibes", sans-serif, cursive; */
+   font-family: "Roboto", sans-serif;
+   font-weight: 900;
+   font-size: 100;
+   text-align: center;
+   margin: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+   margin: 0;
+   overflow: hidden;
+   text-overflow: clip;
+}
+
+h5 {
+   font-size: 10px;
+}
+
+p {
+   margin: 0;
+   overflow: hidden;
+   text-overflow: clip;
+}
+
+.content-container {
+   width: 80%;
+   margin: auto;
+}
+
+.content-container > img {
+   width: 100%;
+   height: 85%;
+   border-radius: 5px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.content-container > .content-src {
+   width: 100%;
+   height: auto;
+   font-size: 10px;
+}
+
+.content-container > .content-title {
+   text-align: center;
+   padding: 10px 0 10px 0;
+}
+
+.content-container > .content-article {
+   width: 80%;
+   padding: 10px 0 30px 0;
+   margin: auto;
+   height: auto;
+}
+
+.content-container > div {
+   margin: auto;
+   text-align: center;
+}
+
+.content-link {
+   text-decoration: none;
+}
+
+.modal {
+   display: none;
+   position: fixed;
+   z-index: 1;
+   padding-top: 1%;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalContent {
+   background-color: white;
+   border-radius: 8px;
+   margin: auto;
+   padding: 15px;
+   width: 80%;
+   height: 95%;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+   overflow-y: scroll;
+   position: relative;
+}
+
+.closeModal {
+   position: fixed;
+   color: #aaaaaa;
+   font-size: 28px;
+   font-weight: bold;
+}
+
+.closeModal:hover,
+.closeModal:focus {
+   color: red;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+/* REUSE */
+
+.business {
+   border-top: 1px solid grey;
+   margin-bottom: 10px;
+}
+
+.business-header {
+   display: flex;
+   margin: 10px;
+   justify-content: space-between;
+}
+
+.business-title {
+   margin: 0;
+   display: flex;
+   align-items: flex-end;
+}
+
+.business-description {
+   display: flex;
+   align-items: flex-end;
+}
+
+.business-description p {
+   margin: 0;
+   font-style: italic;
+}
+
+.business-articles {
+   margin-bottom: 10px;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-gap: 10px;
+}
+
+.business-articles > div {
+   background-color: white;
+   height: 250px;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.business-articles > div:hover {
+   border-radius: 10px;
+   width: 100%;
+   height: 100%;
+   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.business-feature {
+   grid-column: 1/3;
+   grid-row: 1/3;
+}
+
+/* REUSE */
+
+.politics {
+   border-top: 1px solid grey;
+   margin-bottom: 10px;
+}
+
+.politics-header {
+   display: flex;
+   margin: 10px;
+   justify-content: space-between;
+}
+
+.politics-title {
+   margin: 0;
+   display: flex;
+   align-items: flex-end;
+}
+
+.politics-description {
+   display: flex;
+   align-items: flex-end;
+}
+
+.politics-description p {
+   margin: 0;
+   font-style: italic;
+}
+
+.politics-articles {
+   margin-bottom: 10px;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-gap: 10px;
+}
+
+.politics-articles > div {
+   background-color: white;
+   height: 250px;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.politics-articles > div:hover {
+   border-radius: 10px;
+   width: 100%;
+   height: 100%;
+   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.politics-feature {
+   grid-column: 3/5;
+   grid-row: 1/3;
+}
+
+/* REUSE */
+
+.technology {
+   border-top: 1px solid grey;
+   margin-bottom: 10px;
+}
+
+.technology-header {
+   display: flex;
+   margin: 10px;
+   justify-content: space-between;
+}
+
+.technology-title {
+   margin: 0;
+   display: flex;
+   align-items: flex-end;
+}
+
+.technology-description {
+   display: flex;
+   align-items: flex-end;
+}
+
+.technology-description p {
+   margin: 0;
+   font-style: italic;
+}
+
+.technology-articles {
+   margin-bottom: 10px;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-gap: 10px;
+}
+
+.technology-articles > div {
+   background-color: white;
+   height: 250px;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.technology-articles > div:hover {
+   border-radius: 10px;
+   width: 100%;
+   height: 100%;
+   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.technology-feature {
+   grid-column: 2/4;
+   grid-row: 1/3;
+}
+
+/* REUSE */
+
+.science {
+   border-top: 1px solid grey;
+   margin-bottom: 10px;
+}
+
+.science-header {
+   display: flex;
+   margin: 10px;
+   justify-content: space-between;
+}
+
+.science-title {
+   margin: 0;
+   display: flex;
+   align-items: flex-end;
+}
+
+.science-description {
+   display: flex;
+   align-items: flex-end;
+}
+
+.science-description p {
+   margin: 0;
+   font-style: italic;
+}
+
+.science-articles {
+   margin-bottom: 10px;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-gap: 10px;
+}
+
+.science-articles > div {
+   background-color: white;
+   height: 250px;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.science-articles > div:hover {
+   border-radius: 10px;
+   width: 100%;
+   height: 100%;
+   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.science-feature {
+   grid-column: 2/4;
+   grid-row: 2/4;
+}
+
+/* REUSE */
+
+.health {
+   border-top: 1px solid grey;
+   margin-bottom: 10px;
+}
+
+.health-header {
+   display: flex;
+   margin: 10px;
+   justify-content: space-between;
+}
+
+.health-title {
+   margin: 0;
+   display: flex;
+   align-items: flex-end;
+}
+
+.health-description {
+   display: flex;
+   align-items: flex-end;
+}
+
+.health-description p {
+   margin: 0;
+   font-style: italic;
+}
+
+.health-articles {
+   margin-bottom: 10px;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-gap: 10px;
+}
+
+.health-articles > div {
+   background-color: white;
+   height: 250px;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.health-articles > div:hover {
+   border-radius: 10px;
+   width: 100%;
+   height: 100%;
+   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.health-feature {
+   grid-column: 2/4;
+   grid-row: 3/5;
+}
+
+/* Large Tablets */
+@media (max-width: 1200px) {
+   main {
+      width: 98%;
+   }
+
+   /* Business */
+
+   .business-header {
+      display: flex;
+      margin: 10px;
+      justify-content: space-between;
+      flex-direction: column;
+   }
+
+   .business-title {
+      margin: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   .business-description {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   /* Politics */
+
+   .politics-header {
+      display: flex;
+      margin: 10px;
+      justify-content: space-between;
+      flex-direction: column;
+   }
+
+   .politics-title {
+      margin: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   .politics-description {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   /* Technology */
+
+   .technology-header {
+      display: flex;
+      margin: 10px;
+      justify-content: space-between;
+      flex-direction: column;
+   }
+
+   .technology-title {
+      margin: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   .technology-description {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   /* Science */
+
+   .science-header {
+      display: flex;
+      margin: 10px;
+      justify-content: space-between;
+      flex-direction: column;
+   }
+
+   .science-title {
+      margin: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   .science-description {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   /* Health */
+
+   .health-header {
+      display: flex;
+      margin: 10px;
+      justify-content: space-between;
+      flex-direction: column;
+   }
+
+   .health-title {
+      margin: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   .health-description {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+   }
+
+   /* Feature  */
+
+   .business-feature > div > p {
+      padding: 0 10px 0 10px;
+   }
+
+   .politics-feature > div > p {
+      padding: 0 10px 0 10px;
+   }
+
+   .technology-feature > div > p {
+      padding: 0 10px 0 10px;
+   }
+
+   .science-feature > div > p {
+      padding: 0 10px 0 10px;
+   }
+
+   .health-feature > div > p {
+      padding: 0 10px 0 10px;
+   }
+}
+
+/* tablet-landscape{ */
+@media (max-width: 900px) {
+   main {
+      width: 95%;
+   }
+
+   .business-feature {
+      grid-column: 2/4;
+      grid-row: 1/3;
+   }
+
+   .politics-feature {
+      grid-column: 2/4;
+      grid-row: 1/3;
+   }
+
+   .technology-feature {
+      grid-column: 2/4;
+      grid-row: 1/3;
+   }
+
+   .science-feature {
+      grid-column: 2/4;
+      grid-row: 1/3;
+   }
+
+   .health-feature {
+      grid-column: 2/4;
+      grid-row: 1/3;
+   }
+
+   .business-feature > div > h4 {
+      top: 20%;
+      font-size: 20;
+      font-weight: 900;
+   }
+
+   .politics-feature > div > h4 {
+      top: 20%;
+      font-size: 20;
+      font-weight: 900;
+   }
+
+   .technology-feature > div > h4 {
+      top: 20%;
+      font-size: 20;
+      font-weight: 900;
+   }
+
+   .science-feature > div > h4 {
+      top: 20%;
+      font-size: 20;
+      font-weight: 900;
+   }
+
+   .health-feature > div > h4 {
+      top: 20%;
+      font-size: 20;
+      font-weight: 900;
+   }
+
+   .business-feature > div > p {
+      display: none;
+   }
+
+   .politics-feature > div > p {
+      display: none;
+   }
+
+   .technology-feature > div > p {
+      display: none;
+   }
+
+   .science-feature > div > p {
+      display: none;
+   }
+
+   .health-feature > div > p {
+      display: none;
+   }
+}
+
+/* tablet-portrait{ */
+@media (max-width: 700px) {
+   .business-articles {
+      margin-bottom: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      grid-gap: 10px;
+   }
+
+   .business-feature {
+      grid-column: 1/3;
+      grid-row: 1/3;
+   }
+
+   .politics-articles {
+      margin-bottom: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      grid-gap: 10px;
+   }
+
+   .politics-feature {
+      grid-column: 1/3;
+      grid-row: 1/3;
+   }
+
+   .technology-articles {
+      margin-bottom: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      grid-gap: 10px;
+   }
+
+   .technology-feature {
+      grid-column: 1/3;
+      grid-row: 1/3;
+   }
+
+   .science-articles {
+      margin-bottom: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      grid-gap: 10px;
+   }
+
+   .science-feature {
+      grid-column: 1/3;
+      grid-row: 1/3;
+   }
+
+   .health-articles {
+      margin-bottom: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      grid-gap: 10px;
+   }
+
+   .health-feature {
+      grid-column: 1/3;
+      grid-row: 1/3;
+   }
+}
